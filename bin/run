@@ -1,0 +1,65 @@
+require 'pry'
+require_relative '../config/environment'
+#puts "Enter author"
+# name = gets.chomp
+# name = Author.new(name)
+# puts "#{name.articles}"
+alex = Author.new("Alex Irungu")
+bashira = Author.new("Bashira")
+
+#pp alex.name
+#pp bashira.name
+
+alex_mag = Magazine.new("Time", "News")
+bashira_mag = Magazine.new("Vogue", "Fashion")
+
+#pp alex_mag.name
+#pp alex_mag.category
+#pp Magazine.all
+
+
+alex_article = Article.new(alex, alex_mag, "Breaking News")
+bashira_article = Article.new(bashira, bashira_mag, "Fashion Trends")
+#article3 = Article.new(author2, magazine2, "Celebrity Interviews")
+
+pp alex_article.title
+pp alex_article.author
+pp alex_article.magazine
+
+#pp Article.all
+
+alex_mag.add_article(alex_article)
+bashira_mag.add_article(bashira_article)
+
+#puts alex.add_article(bashira_mag, "Red Carpet Styles")
+
+
+#puts alex.name # "Alex Irungu"
+#puts alex_mag.name # "Time"
+#puts alex_article.title # "Breaking News"
+
+#puts bashira_mag.contributors.map { |author| author.name } # ["John Doe", "Jane Smith"]
+#puts bashira_mag.article_titles # ["Fashion Trends", "Red Carpet Styles"]
+#puts bashira_mag.contributing_authors.map { |author| author.name } # ["John Doe"]
+
+puts "Authors:"
+puts "--------"
+puts "Author name: #{alex.name}"
+puts "Magazines: #{alex.magazines.map(&:name).join(', ')}\n\n"
+
+puts "Author name: #{bashira.name}"
+puts "Magazines: #{bashira.magazines.map(&:name).join(', ')}\n\n"
+
+puts "Magazines:"
+puts "-----------"
+puts "Magazine name: #{alex_mag.name}"
+puts "Category: #{alex_mag.category}"
+puts "Contributors: #{alex_mag.contributors.map(&:name).join(', ')}"
+puts "Article titles: #{alex_mag.article_titles.join(', ')}"
+puts "Contributing authors: #{alex_mag.contributing_authors.map(&:name).join(', ')}\n\n"
+
+puts "Magazine name: #{bashira_mag.name}"
+puts "Category: #{bashira_mag.category}"
+puts "Contributors: #{bashira_mag.contributors.map(&:name).join(', ')}"
+puts "Article titles: #{bashira_mag.article_titles.join(', ')}"
+puts "Contributing authors: #{bashira_mag.contributing_authors.map(&:name).join(', ')}\n\n"
