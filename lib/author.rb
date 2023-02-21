@@ -8,6 +8,16 @@ class Author
       @articles = []
       @@all << self
     end
+
+    def articles
+      article_arr = []
+      Article.all.select do |data|
+        if data.author == @name
+          article_arr << data
+        end
+      end
+      article_arr
+    end
     
     def add_article(article)
       @articles << article
@@ -17,11 +27,22 @@ class Author
     def magazines
       @articles.map { |article| article.magazine }.uniq
     end
+
     def self.all
       @@all
     end
+
     def topic_areas
       topics = []
-      arti
+      articles.select do |data|
+        if data.author == @name
+          topics << data.magazine_category
+        end
     end
+    topics
   end
+
+  end
+
+
+  

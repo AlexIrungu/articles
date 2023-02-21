@@ -14,5 +14,9 @@ class Article
     def self.all
       @@all
     end
+    
+    def magazine_category
+      @magazine.category
+    end
   end
   

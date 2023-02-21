@@ -2,6 +2,19 @@ require 'pry'
 require_relative '../config/environment'
 
 
+
+ alex = Author.new("Alex Irungu")
+  jeff = Author.new("Jeff Maina")
+  sandra = Author.new("Sabdra Chepkoech")  
+
+time = Magazine.new("Time" , "Code")
+vogue = Magazine.new("Vogue" , "fashion")
+forbes = Magazine.new("Forbes" , "Business")
+  
+ruby = Article.new(alex, time, "Ruby")
+
+ 
+
 #enter author
 puts "Enter Author: "
 auth_name = gets.chomp
@@ -35,27 +48,27 @@ article_title = gets.chomp
 
 
 # Getting all authors
-puts "Please Enter 'authors' to get all authors"
+puts "Please Enter 'a' to get all authors"
 
 input = gets.chomp
 
-if input == "authors"
+if input == "a"
     Author.all.each {|author| puts "Author: #{author.name}"}
 end
 
 # Getting all magazines
-puts "Kindly enter 'magazines' to get all magazines."
+puts "Kindly enter 'm' to get all magazines."
 input = gets.chomp
 
-if input == "magazines"
+if input == "m"
     Magazine.all.each{|magazine| puts "magazine name: #{magazine.name}"}
 end
 
 # Getting all articles
-puts "Kindly enter 'articles' to get all articles"
+puts "Kindly enter 'a' to get all articles"
 input = gets.chomp
 
-if input == "articles"
+if input == "a"
     Article.all.each{|article| puts "article title: #{article.title}"}
 end
 
@@ -77,41 +90,29 @@ Magazine.all.each do |magazine|
   end
 end
 
-# Getting contributing_authors by magazine name
-puts "Kindly enter  magazine name you would like to find the contributing authors for:"
-input = gets.chomp
+# # Getting contributing_authors by magazine name
+# puts "Kindly enter  magazine name you would like to find the contributing authors for:"
+# input = gets.chomp
 
-Magazine.all.each do |magazine|
-  if magazine.name == input
-    puts "contributing authors: #{magazine.contributing_authors}"
-  end
-end
+# Magazine.all.each do |magazine|
+#   if magazine.name == input
+#     puts "contributing authors: #{magazine.contributing_authors}"
+#   end
+# end
 
-# Finding article titles by magazine name
-puts "Kindly enter name of magazine you would like to find the article titles for:"
-input = gets.chomp
+# # Finding article titles by magazine name
+# puts "Kindly enter name of magazine you would like to find the article titles for:"
+# input = gets.chomp
 
-Magazine.all.each do |magazine|
-  if magazine.name == input
-    puts "article titles: #{magazine.article_titles}"
-  end
-end
-
-
+# Magazine.all.each do |magazine|
+#   if magazine.name == input
+#     puts "article titles: #{magazine.article_titles}"
+#   end
+# end
 
 
 
 
 
-# #print 
-# puts "Authors:"
-# puts "--------"
-# puts "Author name: #{author.name}"
-# puts "Magazines: #{new_mag}\n\n"
 
-# # puts "Author name: #{bashira.name}"
-# # puts "Magazines: #{bashira.magazines.map(&:name).join(', ')}\n\n"
 
-# puts "Magazines:"
-# puts "-----------"
-# puts "Magazine name: #{alex_mag}"

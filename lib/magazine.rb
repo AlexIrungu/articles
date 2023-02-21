@@ -30,6 +30,22 @@ class Magazine
     def contributing_authors
       @articles.map { |article| article.author }.uniq - [nil]
     end
+
+    # def find_values_occuring_more_than_twice(arr)
+    #   result = []
+    #   counts = Hash.new(0)
+      
+    #   arr.each do |item|
+    #     counts[item] += 1
+    #   end
+      
+    #   counts.each do |key, value|
+    #     if value > 2
+    #       result << key
+    #     end
+    #   end
+      
+    #   result
+    # end
     
   end
-  
