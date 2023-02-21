@@ -30,5 +30,6 @@ class Magazine
     def contributing_authors
       @articles.map { |article| article.author }.uniq - [nil]
     end
+    
   end
   

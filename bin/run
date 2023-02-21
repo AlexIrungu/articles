@@ -1,65 +1,117 @@
 require 'pry'
 require_relative '../config/environment'
-#puts "Enter author"
-# name = gets.chomp
-# name = Author.new(name)
-# puts "#{name.articles}"
-alex = Author.new("Alex Irungu")
-bashira = Author.new("Bashira")
+
+
+#enter author
+puts "Enter Author: "
+auth_name = gets.chomp
+author = Author.new(auth_name)
+
+
+puts author.name
+
 
 #pp alex.name
 #pp bashira.name
 
-alex_mag = Magazine.new("Time", "News")
-bashira_mag = Magazine.new("Vogue", "Fashion")
-
-#pp alex_mag.name
-#pp alex_mag.category
-#pp Magazine.all
-
-
-alex_article = Article.new(alex, alex_mag, "Breaking News")
-bashira_article = Article.new(bashira, bashira_mag, "Fashion Trends")
-#article3 = Article.new(author2, magazine2, "Celebrity Interviews")
-
-pp alex_article.title
-pp alex_article.author
-pp alex_article.magazine
-
-#pp Article.all
-
-alex_mag.add_article(alex_article)
-bashira_mag.add_article(bashira_article)
-
-#puts alex.add_article(bashira_mag, "Red Carpet Styles")
+#
+ puts "Enter Magazine Name:  "
+ mag_name = gets.chomp
+ puts "Enter Magazine Category:   "
+ mag_category = gets.chomp
+ new_mag = Magazine.new(mag_name, mag_category)
+puts new_mag.name
+puts new_mag.category
 
 
-#puts alex.name # "Alex Irungu"
-#puts alex_mag.name # "Time"
-#puts alex_article.title # "Breaking News"
 
-#puts bashira_mag.contributors.map { |author| author.name } # ["John Doe", "Jane Smith"]
-#puts bashira_mag.article_titles # ["Fashion Trends", "Red Carpet Styles"]
-#puts bashira_mag.contributing_authors.map { |author| author.name } # ["John Doe"]
 
-puts "Authors:"
-puts "--------"
-puts "Author name: #{alex.name}"
-puts "Magazines: #{alex.magazines.map(&:name).join(', ')}\n\n"
+puts "Enter Article:   "
+article_title = gets.chomp
 
-puts "Author name: #{bashira.name}"
-puts "Magazines: #{bashira.magazines.map(&:name).join(', ')}\n\n"
+ new_article = Article.new(author, new_mag, article_title)
+ puts new_article.author
 
-puts "Magazines:"
-puts "-----------"
-puts "Magazine name: #{alex_mag.name}"
-puts "Category: #{alex_mag.category}"
-puts "Contributors: #{alex_mag.contributors.map(&:name).join(', ')}"
-puts "Article titles: #{alex_mag.article_titles.join(', ')}"
-puts "Contributing authors: #{alex_mag.contributing_authors.map(&:name).join(', ')}\n\n"
 
-puts "Magazine name: #{bashira_mag.name}"
-puts "Category: #{bashira_mag.category}"
-puts "Contributors: #{bashira_mag.contributors.map(&:name).join(', ')}"
-puts "Article titles: #{bashira_mag.article_titles.join(', ')}"
-puts "Contributing authors: #{bashira_mag.contributing_authors.map(&:name).join(', ')}\n\n"
+
+# Getting all authors
+puts "Please Enter 'authors' to get all authors"
+
+input = gets.chomp
+
+if input == "authors"
+    Author.all.each {|author| puts "Author: #{author.name}"}
+end
+
+# Getting all magazines
+puts "Kindly enter 'magazines' to get all magazines."
+input = gets.chomp
+
+if input == "magazines"
+    Magazine.all.each{|magazine| puts "magazine name: #{magazine.name}"}
+end
+
+# Getting all articles
+puts "Kindly enter 'articles' to get all articles"
+input = gets.chomp
+
+if input == "articles"
+    Article.all.each{|article| puts "article title: #{article.title}"}
+end
+
+#Getting all topics
+puts "Kindly enter 'topic' to get all topics:"
+input = gets.chomp
+
+if input == "topic"
+  Magazine.all.each {|magazine| puts "magazine topic: #{magazine.category}"}
+end
+
+# Finding magazine by name
+puts "Kindly enter the magazine name you would like to find:"
+input = gets.chomp
+
+Magazine.all.each do |magazine|
+  if magazine.name == input
+    puts "magazine name: #{magazine.name}"
+  end
+end
+
+# Getting contributing_authors by magazine name
+puts "Kindly enter  magazine name you would like to find the contributing authors for:"
+input = gets.chomp
+
+Magazine.all.each do |magazine|
+  if magazine.name == input
+    puts "contributing authors: #{magazine.contributing_authors}"
+  end
+end
+
+# Finding article titles by magazine name
+puts "Kindly enter name of magazine you would like to find the article titles for:"
+input = gets.chomp
+
+Magazine.all.each do |magazine|
+  if magazine.name == input
+    puts "article titles: #{magazine.article_titles}"
+  end
+end
+
+
+
+
+
+
+
+# #print 
+# puts "Authors:"
+# puts "--------"
+# puts "Author name: #{author.name}"
+# puts "Magazines: #{new_mag}\n\n"
+
+# # puts "Author name: #{bashira.name}"
+# # puts "Magazines: #{bashira.magazines.map(&:name).join(', ')}\n\n"
+
+# puts "Magazines:"
+# puts "-----------"
+# puts "Magazine name: #{alex_mag}"
