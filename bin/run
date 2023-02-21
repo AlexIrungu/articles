@@ -1,6 +1,7 @@
 require 'pry'
 require_relative '../config/environment'
 
+
 #authors
 alex = Author.new("Alex Irungu")
 jeff = Author.new("Jeff Maina")
@@ -78,12 +79,21 @@ end
 # Finding magazine by name
 puts "Kindly enter the magazine name you would like to find:"
 input = gets.chomp
+search = Magazine.find_by_name(input)
+puts "#{search.name}"
 
-Magazine.all.each do |magazine|
-  if magazine.name == input
-    puts "magazine name: #{magazine.name}"
-  end
-end
+#Finding article titles by magazine name
+puts "Kindly enter name of magazine you would like to find the article titles for:"
+input = gets.chomp
+ puts "#{new_mag.article_titles}"
+
+ #Getting contributing_authors by magazine name
+ puts "Kindly enter  magazine name you would like to find the contributing authors for:"
+ input = gets.chomp
+ puts "#{new_mag.contributing_authors}"
+
+
+
 
 
 

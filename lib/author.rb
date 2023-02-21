@@ -33,14 +33,15 @@ class Author
     end
 
     def topic_areas
-      topics = []
-      articles.select do |data|
-        if data.author == @name
-          topics << data.magazine_category
+      magazine.map { |magazine| magazine.category}.uniq
+      # topics = []
+      # articles.select do |data|
+      #   if data.author == @name
+      #     topics << data.magazine_category
         end
-    end
-    topics
-  end
+  #   end
+  #   topics
+  # end
 
   end
 

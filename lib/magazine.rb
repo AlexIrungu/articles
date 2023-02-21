@@ -24,28 +24,16 @@ class Magazine
     end
     
     def article_titles
-      @articles.map { |article| article.title }
+      Article.all.map { |article| article.title }
     end
     
     def contributing_authors
       @articles.map { |article| article.author }.uniq - [nil]
     end
 
-    # def find_values_occuring_more_than_twice(arr)
-    #   result = []
-    #   counts = Hash.new(0)
-      
-    #   arr.each do |item|
-    #     counts[item] += 1
-    #   end
-      
-    #   counts.each do |key, value|
-    #     if value > 2
-    #       result << key
-    #     end
-    #   end
-      
-    #   result
-    # end
-    
+    def Magazine.find_by_name name
+      Magazine.all.find {|search_by| search_by.name == name}
+    end
+
+   
   end

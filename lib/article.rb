@@ -10,11 +10,15 @@ class Article
       @title = title
       @@all << self
     end
+
+    def title
+      @title
+    end
     
     def self.all
       @@all
     end
-    
+
     def magazine_category
       @magazine.category
     end
